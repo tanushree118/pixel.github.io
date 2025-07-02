@@ -21,10 +21,9 @@
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1752205348759787');
+        fbq('init', '1104347784872708');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1752205348759787&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 
@@ -61,6 +60,27 @@
             // Trigger Facebook Pixel AddToCart event with user data
             fbq('track', 'AddToCart', {
                 content_name: 'Test Product',
+                content_category: 'Example Category',
+                content_ids: ['1234'],
+                content_type: 'product',
+                value: 50.00,
+                currency: 'USD',
+                user_name: name
+            });
+        });
+        document.getElementById('addToWishlistButton').addEventListener('click', function () {
+            // Get the values from the form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (!name || !email) {
+                alert('Please enter both your name and email.');
+                return;
+            }
+
+            // Trigger Facebook Pixel AddToCart event with user data
+            fbq('track', 'AddToWishlist', {
+                content_name: 'Wish Product',
                 content_category: 'Example Category',
                 content_ids: ['1234'],
                 content_type: 'product',
